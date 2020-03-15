@@ -1,13 +1,18 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.param.MyParam;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class home {
 
-    @GetMapping("test")
-    public String test() {
-        return "test page!";
+    @PostMapping("/test")
+    public String testPage(MyParam param, Model model) {
+        model.addAttribute("name",param.getName());
+        model.addAttribute("age",param.getAge());
+        return "apply";
     }
+
 }
